@@ -87,7 +87,7 @@ switch ($opcao) {
         $clienteDao = new ClienteDao();
         $clienteAlterado = $clienteDao->alterar($cliente);
 
-        $_SESSION['clienteLogado'] = $cliente;
+        $_SESSION['clienteLogado'] = $clienteAlterado;
         header('Location: ../views/formCadastroAtualizar.php');
         break;
 }

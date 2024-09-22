@@ -22,13 +22,13 @@ class ClienteDao
         $sql->bindValue(':senha', $senha);
         $sql->execute();
 
-        $cliente = null;
+        $clienteRetorno = null;
 
         if ($sql->rowCount() == 1) {
-            $cliente = $sql->fetch(PDO::FETCH_OBJ);
+            $clienteRetorno = $sql->fetch(PDO::FETCH_OBJ);
         }
 
-        return $cliente;
+        return $clienteRetorno;
     }
 
     function cadastrar($cliente)
@@ -74,8 +74,8 @@ class ClienteDao
         $sql->bindValue(':cpf', $cliente->cpf);
         $sql->execute();
 
-        $sql_cliente = $this->con->prepare("SELECT * FROM clientes WHERE cpf LIKE :cpf'");
-        $sql_cliente->bindValue(':id', $cliente->id);
+        $sql_cliente = $this->con->prepare("SELECT * FROM clientes WHERE cpf LIKE :cpf");
+        $sql_cliente->bindValue(':cpf', $cliente->cpf);
         $sql_cliente->execute();
 
         $clienteRetorno = $sql_cliente->fetch(PDO::FETCH_ASSOC);

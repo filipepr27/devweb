@@ -16,7 +16,13 @@
       </a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="./formCadastro.php">Cadastrar</a></li>
-        <li><a class="dropdown-item" href="./formCadastroAtualizar.php">Seus dados</a></li>
+        <?php
+        if (isset($_SESSION['clienteLogado'])) {
+        ?>
+          <li><a class="dropdown-item" href="./formCadastroAtualizar.php">Seus dados</a></li>
+        <?php
+        }
+        ?>
       </ul>
     </li>
 
