@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php
 
 require_once '../dao/clienteDAO.inc.php';
@@ -32,6 +33,7 @@ switch ($opcao) {
         // sair do sistema
         session_start();
         unset($_SESSION['clienteLogado']);
+        unset($_SESSION['carrinho']);
         header('Location: ../views/index.php');
         break;
 
@@ -49,9 +51,10 @@ switch ($opcao) {
         $rg = $_REQUEST['pRG'];
         $email = $_REQUEST['pEmail'];
         $senha = $_REQUEST['pSenha'];
+        $tipo_cliente = $_REQUEST['pTipoCliente'];
 
         $cliente = new Cliente();
-        $cliente->cadastrarCliente($nome, $email, $cpf, $rg, $data_Nascimento, $logradouro, $cep, $cidade, $estado, $telefone, $senha);
+        $cliente->cadastrarCliente($nome, $email, $cpf, $rg, $data_Nascimento, $logradouro, $cep, $cidade, $estado, $telefone, $tipo_cliente, $senha);
 
         $clienteDao = new ClienteDao();
         $resposostaCadastro = $clienteDao->cadastrar($cliente);
@@ -80,6 +83,7 @@ switch ($opcao) {
         $telefone = $_REQUEST['pTelefone'];
         $data_Nascimento = $_REQUEST['pDataNasc'];
         $rg = $_REQUEST['pRG'];
+
 
         $cliente = new Cliente();
         $cliente->alterarCliente($cpf, $nome, $rg, $data_Nascimento, $logradouro, $cep, $cidade, $estado, $telefone);

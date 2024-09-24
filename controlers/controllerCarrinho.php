@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php
 require_once '../dao/produtoDAO.inc.php';
 require_once '../classes/produto.inc.php';
@@ -73,7 +74,27 @@ switch ($opcao) {
     case 5:
         // finalizar compra
         session_start();
+        $tipo_cliente = $_SESSION['clienteLogado']->tipo_cliente;
         $total = (float)$_SESSION['total'];
+
+        switch ($tipo_cliente) {
+            case 'Standart':
+                $desconto = 0.07;
+                break;
+            case 'Premium':
+                $desconto = 0.25;
+                break;
+            case 'Master':
+                $desconto = 0.2;
+                break;
+            default:
+                $desconto = 0;
+                break;
+        }
+
+
+        $_SESSION['totalComDesconto'] = $total - ($total * $desconto);
+        $_SESSION['desconto'] = $desconto * 100;
 
         if (!isset($_SESSION['clienteLogado'])) {
             $_SESSION['finalizandoCompra'] = true;

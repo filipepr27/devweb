@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php
 
 class Cliente
@@ -14,10 +15,11 @@ class Cliente
     public $telefone;
     public $senha;
     public $tipo;
+    public $tipo_cliente;
 
     function __construct() {}
 
-    public function cadastrarCliente($nome, $email, $cpf, $rg, $data_nascimento, $logradouro, $cep, $cidade, $estado, $telefone, $senha)
+    public function cadastrarCliente($nome, $email, $cpf, $rg, $data_nascimento, $logradouro, $cep, $cidade, $estado, $telefone, $tipo_cliente, $senha)
     {
         $this->nome = $nome;
         $this->email = $email;
@@ -30,6 +32,7 @@ class Cliente
         $this->estado = $estado;
         $this->telefone = $telefone;
         $this->tipo = 'C';
+        $this->tipo_cliente = $tipo_cliente;
         $this->senha = $senha;
     }
 

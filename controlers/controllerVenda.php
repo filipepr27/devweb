@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php
 
 require_once '../dao/vendaDAO.inc.php';
@@ -7,7 +8,7 @@ switch ($opcao) {
     case 1:
         // finalizar venda
         session_start();
-        $venda = new Venda($_SESSION['clienteLogado']->cpf, $_SESSION['total']);
+        $venda = new Venda($_SESSION['clienteLogado']->cpf, $_SESSION['totalComDesconto']);
 
         $vendaDao = new VendaDao();
         $vendaDao->inserirVenda($venda, $_SESSION['carrinho']);

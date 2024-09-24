@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php
 
 require_once '../classes/cliente.inc.php';
@@ -41,7 +42,7 @@ class ClienteDao
         if ($sql_verifica->rowCount() > 0) {
             return 'Usuário já existe';
         } else {
-            $sql = $this->con->prepare("INSERT INTO clientes (nome, cpf, data_nascimento, logradouro, cep, cidade, estado, telefone, rg, tipo, email, senha) VALUES (:nome, :cpf, :data_nascimento, :logradouro, :cep, :cidade, :estado, :telefone, :rg, :tipo, :email, :senha)");
+            $sql = $this->con->prepare("INSERT INTO clientes (nome, cpf, data_nascimento, logradouro, cep, cidade, estado, telefone, rg, tipo, tipo_cliente, email, senha) VALUES (:nome, :cpf, :data_nascimento, :logradouro, :cep, :cidade, :estado, :telefone, :rg, :tipo, :tipo_cliente, :email, :senha)");
             $sql->bindValue(':nome', $cliente->nome);
             $sql->bindValue(':cpf', $cliente->cpf);
             $sql->bindValue(':data_nascimento', $cliente->data_nascimento);
@@ -52,6 +53,7 @@ class ClienteDao
             $sql->bindValue(':telefone', $cliente->telefone);
             $sql->bindValue(':rg', $cliente->rg);
             $sql->bindValue(':tipo', $cliente->tipo);
+            $sql->bindValue(':tipo_cliente', $cliente->tipo_cliente);
             $sql->bindValue(':email', $cliente->email);
             $sql->bindValue(':senha', $cliente->senha);
             $sql->execute();

@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php require_once
     "includes/cabecalho.inc.php";
 ?>
@@ -77,6 +78,14 @@
                     </div>
 
                     <hr>
+
+                    <div class="form-floating mb-3">
+                        Tipo de Cliente
+                        <br>
+                        <input type="radio" name="pTipoCliente" value="Standart" required>Standart
+                        <input type="radio" name="pTipoCliente" value="Master" required>Master
+                        <input type="radio" name="pTipoCliente" value="Premium" required>Premium
+                    </div>
 
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="floatingInputEmail" placeholder="nome@exemplo.com" name="pEmail" required>

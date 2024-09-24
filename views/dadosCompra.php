@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php
 require_once "../classes/produto.inc.php";
 require_once "../classes/item.inc.php";
@@ -6,6 +7,9 @@ require_once "includes/cabecalho.inc.php";
 $cliente = $_SESSION["clienteLogado"];
 $carrinho = $_SESSION["carrinho"];
 $total = $_SESSION["total"];
+$desconto = $_SESSION["desconto"];
+$total_com_desconto = $_SESSION["totalComDesconto"];
+
 ?>
 
 <h1 class="text-center">Dados do cliente</h1>
@@ -59,6 +63,12 @@ $total = $_SESSION["total"];
                   <tr align="right">
                         <td colspan="7">
                               <font face="Verdana" size="4" color="red"><b>Valor Total = R$ <?= $total ?></b></font>
+                        </td>
+                  </tr>
+                  <tr align="right">
+                        <td colspan="7">
+                              Cliente <?php echo $cliente->tipo_cliente ?> com <?= $desconto ?>% de desconto.
+                              <font face="Verdana" size="4" color="red"><b>Valor com Desconto = R$ <?= $total_com_desconto ?></b></font>
                         </td>
                   </tr>
       </table>

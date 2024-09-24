@@ -1,3 +1,4 @@
+<!-- Filipe Pádua Ribeiro - 2020204136 -->
 <?php
 require_once 'conexao.inc.php';
 require_once '../utils/funcoesUteis.php';
@@ -38,6 +39,11 @@ class VendaDao
 
             $sql_produto = $this->con->prepare("UPDATE produtos SET estoque = estoque - :quantidade WHERE produto_id = :id");
             $sql_produto->bindValue(':quantidade', $item->getQuantidade());
+
+            if ($item->getQuantidade() > $item->getProduto()->estoque) {
+                $sql_produto->bindValue(':quantidade', $item->getProduto()->estoque);
+            }
+
             $sql_produto->bindValue(':id', $item->getProduto()->id);
             $sql_produto->execute();
         }
